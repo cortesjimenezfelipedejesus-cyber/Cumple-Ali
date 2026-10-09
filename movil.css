@@ -1,0 +1,82 @@
+/* =========================================================
+   AJUSTES PARA CELULAR  (archivo aparte: movil.css)
+   Se carga DESPUÉS de styles.css, así que sus reglas ganan.
+   ========================================================= */
+
+/* ---------- CELULAR EN VERTICAL ---------- */
+@media (max-width: 768px) and (orientation: portrait) {
+
+  html, body { height: 100%; }
+  body { min-height: 100dvh; }
+  .galeria-fondo, #confettiCanvas { height: 100dvh; }
+
+  /* Bloque central (título + sobre + instrucción) */
+  .contenedor { --esc: 0.85; scale: var(--esc); }
+  .titulo-neon { font-size: 2.4rem; margin-bottom: 18px; }
+
+  /* Carta abierta: se adapta al ancho y alto del celular */
+  .envoltura-sobre.abierto .carta {
+    --alto-carta: min(540px, calc(86dvh / var(--esc)));
+    width: 380px;
+    left: -20px;
+    height: var(--alto-carta);
+    transform: translateY(calc(var(--alto-carta) / 2 - 120px));
+  }
+  .contenido h2 { font-size: 2rem; }
+  .contenido p  { font-size: 1.3rem; }
+  .firma        { font-size: 1.2rem; }
+
+  /* ---------- Adornos ---------- */
+  .gatito-festejo { width: 95px; top: 3%; left: 3%; right: auto; bottom: auto; }
+  .gatito-saludo  { width: 95px; top: 3%; right: 3%; left: auto; bottom: auto; }
+  .globos-detras  { width: 110px; top: 2%; }
+
+  .pastel-grande {
+    width: 150px; bottom: 14%; left: 1%; right: auto; top: auto;
+  }
+  .damita-espera {
+    height: 150px; width: auto; bottom: 12%; right: 1%; left: auto; top: auto;
+  }
+  .gatito-flor {
+    width: 100px; bottom: 3%; left: calc(50% - 50px); right: auto; top: auto;
+  }
+
+  .globos-esquina-izq { width: 120px; bottom: -5px; left: -10px; right: auto; }
+  .globos-esquina-der { width: 120px; bottom: -5px; right: -10px; left: auto; }
+  .globos-esquina-izq-2,
+  .globos-esquina-der-2 { display: none; }
+}
+
+/* ---------- CELULAR EN HORIZONTAL ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+
+  html, body { height: 100%; }
+  body { min-height: 100dvh; }
+  .galeria-fondo, #confettiCanvas { height: 100dvh; }
+
+  .contenedor { --esc: 0.62; scale: var(--esc); }
+  .titulo-neon { font-size: 2.4rem; margin-bottom: 18px; }
+
+  .envoltura-sobre.abierto .carta {
+    --alto-carta: min(520px, calc(88dvh / var(--esc)));
+    width: 520px;
+    left: -90px;
+    height: var(--alto-carta);
+    transform: translateY(calc(var(--alto-carta) / 2 - 120px));
+  }
+
+  .globos-detras, .gatito-flor,
+  .globos-esquina-izq-2, .globos-esquina-der-2 { display: none; }
+
+  .gatito-festejo { width: 80px; top: 4%; left: 3%; right: auto; bottom: auto; }
+  .gatito-saludo  { width: 80px; top: 4%; right: 3%; left: auto; bottom: auto; }
+
+  .pastel-grande {
+    width: 140px; bottom: 4%; left: 4%; right: auto; top: auto;
+  }
+  .damita-espera {
+    height: 52dvh; width: auto; bottom: 4%; right: 4%; left: auto; top: auto;
+  }
+  .globos-esquina-izq { width: 110px; bottom: -5px; left: -10px; right: auto; }
+  .globos-esquina-der { width: 110px; bottom: -5px; right: -10px; left: auto; }
+}

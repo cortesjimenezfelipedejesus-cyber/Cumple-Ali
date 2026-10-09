@@ -77,12 +77,12 @@ body {
 .titulo-neon {
   font-family: 'MiFuente', cursive; /* Aplica la fuente descargada de DaFont */
   font-size: 3.2rem; 
-  color: #fff8e1; /* Color crema suave */
+  color: #8b1685; ; /* Color crema suave */
 
   /* SOMBRAS MULTICAPA: Crean el resplandor neón rosado */
   text-shadow: 
     0 0 5px #fff,
-    0 0 10px #ff4081,
+    0 0 10px  #dc3db9,
     0 0 20px #ff4081,
     0 0 30px #e91e63;
 
@@ -204,21 +204,21 @@ body {
    ========================================================= */
 .contenido h2 {
   font-family: 'MiFuente', cursive; 
-  font-size: 2.2rem;                
-  color: #fff8e1;                   
+  font-size: 2.6rem;                
+  color: #8b1685;                   
   margin-bottom: 12px;              
 
   /* EFECTO NEÓN ROSADO */
   text-shadow: 
     0 0 4px #ffffff,
-    0 0 8px #ff4081,
+    0 0 8px #dc3db9,
     0 0 15px #ff4081,
-    0 0 25px #e91e63;
+    0 0 25px #8d1274;
 }
 
 .contenido p {
   font-family: 'MiFuente', cursive; 
-  font-size: 1.45rem; 
+  font-size: 1.8rem; 
   color: #111111;       
   line-height: 1.45; 
 }
@@ -226,7 +226,7 @@ body {
 .firma {
   margin-top: 15px;      
   text-align: right;     
-  font-size: 1.3rem;    
+  font-size: 1.6rem;    
 }
 
 /* --- IMAGEN UBICADA EN LA ESQUINA INFERIOR DERECHA DEL PIE DE CARTA --- */
@@ -272,8 +272,8 @@ body {
 /* --- B. PASTEL GRANDE (AL LADO IZQUIERDO DE LA CARTA) --- */
 .pastel-grande {
   width: 340px;
-  bottom: 4%;
-  right: calc(50% + 140px);   /* Borde derecho del pastel queda DEBAJO de la carta */
+  bottom: 22%;
+  right: calc(50% + 90px);   /* Borde derecho del pastel queda DEBAJO de la carta */
   left: auto;
   z-index: 25;
   animation: latidoPastel 3s ease-in-out infinite alternate;
@@ -283,8 +283,8 @@ body {
 .damita-espera {
   height: min(62vh, 430px);
   width: auto;
-  bottom: 4%;
-  left: calc(50% + 190px);    /* A la derecha de la carta */
+  bottom: 28%;
+  left: calc(50% + 100px);    /* A la derecha de la carta */
   right: auto;
   z-index: 26;
   animation: esperaAnsiosa 2.5s ease-in-out infinite alternate;
@@ -293,22 +293,23 @@ body {
 /* --- D. GATITOS MÁS GRANDES --- */
 .gatito-festejo {
   width: 240px;
-  top: 8%;
-  left: 4%;
+  top: 5%;
+  left: 2%;
   animation: saltitoFestejo 1.2s ease-in-out infinite alternate;
 }
 
 .gatito-saludo {
   width: 240px;
-  top: 8%;
-  right: 4%;
+  top: 5%;
+  right: 2%;
   animation: balanceoSaludo 2s ease-in-out infinite alternate;
 }
 
 .gatito-flor {
   width: 230px;
-  bottom: 8%;
-  right: 20%;
+  bottom: 2%;
+  left: calc(50% + 200px);
+  right: auto;
   animation: respirarSuave 3s ease-in-out infinite alternate;
 }
 
@@ -322,7 +323,7 @@ body {
 
 .globos-esquina-izq-2 {
   width: 300px;
-  bottom: 10px;
+  bottom: 60px;
   left: 80px;
   opacity: 0.9;
   animation: flotarGlobo 4s ease-in-out infinite alternate 0.3s;
@@ -333,14 +334,16 @@ body {
   bottom: -20px;
   right: -30px;
   animation: flotarGlobo 4s ease-in-out infinite alternate 0.5s;
+  scale: -1 1;   /* voltea el ramo en horizontal */
 }
 
 .globos-esquina-der-2 {
   width: 300px;
-  bottom: 10px;
+  bottom: 60px;
   right: 80px;
   opacity: 0.9;
   animation: flotarGlobo 3.7s ease-in-out infinite alternate 0.8s;
+   scale: -1 1;
 }
 
 /* =========================================================
@@ -423,3 +426,95 @@ body {
   .globos-esquina-izq, .globos-esquina-der { width: 220px; }
   .globos-esquina-izq-2, .globos-esquina-der-2 { width: 190px; }
 }
+/* =========================================================
+   ANIMACIONES DEL SOBRE
+   ========================================================= */
+
+/* Sobre flotando suavemente */
+.envoltura-sobre {
+  animation: tocarPuerta 2.5s ease-in-out infinite;
+}
+
+@keyframes tocarPuerta {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  66%  { transform: rotate(-3deg); }
+  72%  { transform: rotate(3deg); }
+  78%  { transform: rotate(-3deg); }
+  84%  { transform: rotate(2deg); }
+}
+
+@keyframes flotarSobre {
+  0%   { transform: translateY(0) rotate(-1deg); }
+  100% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Corazón latiendo */
+.corazon {
+  animation: latirCorazon 1.2s ease-in-out infinite;
+}
+
+@keyframes latirCorazon {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%      { transform: translate(-50%, -50%) scale(1.25); }
+}
+
+/* Cuando el sobre está abierto, deja de flotar y el corazón deja de latir */
+.envoltura-sobre.abierto {
+  animation: none;
+}
+
+.envoltura-sobre.abierto .corazon {
+  animation: none;
+}
+/* =========================================================
+   VERSIÓN CELULAR VERTICAL
+   ========================================================= */
+@media (max-width: 768px) and (orientation: portrait) {
+
+  body { min-height: 100dvh; }
+  .galeria-fondo, #confettiCanvas { height: 100dvh; }
+
+  /* Bloque central (título + sobre + instrucción) */
+  .contenedor { --esc: 0.85; scale: var(--esc); }
+  .titulo-neon { font-size: 2.4rem; margin-bottom: 18px; }
+
+  /* Carta abierta: se adapta al ancho y alto del celular */
+  .envoltura-sobre.abierto .carta {
+    --alto-carta: min(540px, calc(86dvh / var(--esc)));
+    --ancho-carta: min(380px, calc(92vw / var(--esc)));
+    width: var(--ancho-carta);
+    left: calc((340px - var(--ancho-carta)) / 2);
+    height: var(--alto-carta);
+    transform: translateY(calc(var(--alto-carta) / 2 - 120px));
+  }
+  .contenido h2 { font-size: 2rem; }
+  .contenido p  { font-size: 1.3rem; }
+  .firma        { font-size: 1.2rem; }
+
+  /* ---------- Adornos ---------- */
+  /* Arriba */
+  .gatito-festejo { width: 95px !important; top: 3% !important; left: 3% !important; right: auto !important; bottom: auto !important; }
+  .gatito-saludo  { width: 95px !important; top: 3% !important; right: 3% !important; left: auto !important; bottom: auto !important; }
+  .globos-detras  { width: 110px !important; top: 2% !important; }
+
+  /* Abajo */
+  .pastel-grande {
+    width: 150px !important; bottom: 14% !important;
+    left: 1% !important; right: auto !important; top: auto !important;
+  }
+  .damita-espera {
+    height: 170px !important; width: auto !important; bottom: 14% !important;
+    right: 1% !important; left: auto !important; top: auto !important;
+  }
+  .gatito-flor {
+    width: 100px !important; bottom: 3% !important;
+    left: calc(50% - 50px) !important; right: auto !important; top: auto !important;
+  }
+
+  /* Globos de esquina (detrás del pastel y la damita) */
+  .globos-esquina-izq   { width: 120px !important; bottom: -5px !important; left: -10px !important; right: auto !important; z-index: 20; }
+  .globos-esquina-der   { width: 120px !important; bottom: -5px !important; right: -10px !important; left: auto !important; z-index: 20; }
+  .globos-esquina-izq-2,
+  .globos-esquina-der-2 { display: none; }
+}
+
