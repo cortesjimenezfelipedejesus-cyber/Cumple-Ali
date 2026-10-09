@@ -77,12 +77,12 @@ body {
 .titulo-neon {
   font-family: 'MiFuente', cursive; /* Aplica la fuente descargada de DaFont */
   font-size: 3.2rem; 
-  color: #8b1685; ; /* Color crema suave */
+  color: #fff8e1; /* Color crema suave */
 
   /* SOMBRAS MULTICAPA: Crean el resplandor neón rosado */
   text-shadow: 
     0 0 5px #fff,
-    0 0 10px  #dc3db9,
+    0 0 10px #ff4081,
     0 0 20px #ff4081,
     0 0 30px #e91e63;
 
@@ -204,21 +204,21 @@ body {
    ========================================================= */
 .contenido h2 {
   font-family: 'MiFuente', cursive; 
-  font-size: 2.6rem;                
-  color: #8b1685;                   
+  font-size: 2.2rem;                
+  color: #fff8e1;                   
   margin-bottom: 12px;              
 
   /* EFECTO NEÓN ROSADO */
   text-shadow: 
     0 0 4px #ffffff,
-    0 0 8px #dc3db9,
+    0 0 8px #ff4081,
     0 0 15px #ff4081,
-    0 0 25px #8d1274;
+    0 0 25px #e91e63;
 }
 
 .contenido p {
   font-family: 'MiFuente', cursive; 
-  font-size: 1.8rem; 
+  font-size: 1.45rem; 
   color: #111111;       
   line-height: 1.45; 
 }
@@ -226,7 +226,7 @@ body {
 .firma {
   margin-top: 15px;      
   text-align: right;     
-  font-size: 1.6rem;    
+  font-size: 1.3rem;    
 }
 
 /* --- IMAGEN UBICADA EN LA ESQUINA INFERIOR DERECHA DEL PIE DE CARTA --- */
@@ -272,8 +272,8 @@ body {
 /* --- B. PASTEL GRANDE (AL LADO IZQUIERDO DE LA CARTA) --- */
 .pastel-grande {
   width: 340px;
-  bottom: 22%;
-  right: calc(50% + 90px);   /* Borde derecho del pastel queda DEBAJO de la carta */
+  bottom: 4%;
+  right: calc(50% + 140px);   /* Borde derecho del pastel queda DEBAJO de la carta */
   left: auto;
   z-index: 25;
   animation: latidoPastel 3s ease-in-out infinite alternate;
@@ -283,8 +283,8 @@ body {
 .damita-espera {
   height: min(62vh, 430px);
   width: auto;
-  bottom: 28%;
-  left: calc(50% + 100px);    /* A la derecha de la carta */
+  bottom: 4%;
+  left: calc(50% + 190px);    /* A la derecha de la carta */
   right: auto;
   z-index: 26;
   animation: esperaAnsiosa 2.5s ease-in-out infinite alternate;
@@ -293,23 +293,22 @@ body {
 /* --- D. GATITOS MÁS GRANDES --- */
 .gatito-festejo {
   width: 240px;
-  top: 5%;
-  left: 2%;
+  top: 8%;
+  left: 4%;
   animation: saltitoFestejo 1.2s ease-in-out infinite alternate;
 }
 
 .gatito-saludo {
   width: 240px;
-  top: 5%;
-  right: 2%;
+  top: 8%;
+  right: 4%;
   animation: balanceoSaludo 2s ease-in-out infinite alternate;
 }
 
 .gatito-flor {
   width: 230px;
-  bottom: 2%;
-  left: calc(50% + 200px);
-  right: auto;
+  bottom: 8%;
+  right: 20%;
   animation: respirarSuave 3s ease-in-out infinite alternate;
 }
 
@@ -323,7 +322,7 @@ body {
 
 .globos-esquina-izq-2 {
   width: 300px;
-  bottom: 60px;
+  bottom: 10px;
   left: 80px;
   opacity: 0.9;
   animation: flotarGlobo 4s ease-in-out infinite alternate 0.3s;
@@ -334,16 +333,14 @@ body {
   bottom: -20px;
   right: -30px;
   animation: flotarGlobo 4s ease-in-out infinite alternate 0.5s;
-  scale: -1 1;   /* voltea el ramo en horizontal */
 }
 
 .globos-esquina-der-2 {
   width: 300px;
-  bottom: 60px;
+  bottom: 10px;
   right: 80px;
   opacity: 0.9;
   animation: flotarGlobo 3.7s ease-in-out infinite alternate 0.8s;
-   scale: -1 1;
 }
 
 /* =========================================================
@@ -425,44 +422,4 @@ body {
   .gatito-flor { width: 150px; }
   .globos-esquina-izq, .globos-esquina-der { width: 220px; }
   .globos-esquina-izq-2, .globos-esquina-der-2 { width: 190px; }
-}
-/* =========================================================
-   ANIMACIONES DEL SOBRE
-   ========================================================= */
-
-/* Sobre flotando suavemente */
-.envoltura-sobre {
-  animation: tocarPuerta 2.5s ease-in-out infinite;
-}
-
-@keyframes tocarPuerta {
-  0%, 60%, 100% { transform: rotate(0deg); }
-  66%  { transform: rotate(-3deg); }
-  72%  { transform: rotate(3deg); }
-  78%  { transform: rotate(-3deg); }
-  84%  { transform: rotate(2deg); }
-}
-
-@keyframes flotarSobre {
-  0%   { transform: translateY(0) rotate(-1deg); }
-  100% { transform: translateY(-10px) rotate(1deg); }
-}
-
-/* Corazón latiendo */
-.corazon {
-  animation: latirCorazon 1.2s ease-in-out infinite;
-}
-
-@keyframes latirCorazon {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50%      { transform: translate(-50%, -50%) scale(1.25); }
-}
-
-/* Cuando el sobre está abierto, deja de flotar y el corazón deja de latir */
-.envoltura-sobre.abierto {
-  animation: none;
-}
-
-.envoltura-sobre.abierto .corazon {
-  animation: none;
 }
