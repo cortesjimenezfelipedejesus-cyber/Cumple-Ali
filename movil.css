@@ -16,7 +16,7 @@
 
   /* Carta abierta: se adapta al ancho y alto del celular */
   .envoltura-sobre.abierto .carta {
-    --alto-carta: min(540px, calc(86dvh / var(--esc)));
+    --alto-carta: min(340px, calc(86dvh / var(--esc)));
     width: 380px;
     left: -20px;
     height: var(--alto-carta);
@@ -58,7 +58,7 @@
   .titulo-neon { font-size: 2.4rem; margin-bottom: 18px; }
 
   .envoltura-sobre.abierto .carta {
-    --alto-carta: min(520px, calc(88dvh / var(--esc)));
+    --alto-carta: min(330px, calc(88dvh / var(--esc)));
     width: 520px;
     left: -90px;
     height: var(--alto-carta);
