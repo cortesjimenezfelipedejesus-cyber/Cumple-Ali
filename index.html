@@ -1,0 +1,107 @@
+<!DOCTYPE html> <!-- Indica al navegador que este documento utiliza el estándar HTML5 -->
+<html lang="es"> <!-- Define el idioma principal de la página como español -->
+<head>
+  <meta charset="UTF-8"> <!-- Configura la codificación para que se lean acentos, ñ y emojis -->
+  
+  <!-- Configura la ventana gráfica para que el diseño sea responsivo en celulares y laptops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>🥳🎊¡Feliz Cumpleaños!🎊</title> <!-- Título que aparece en la pestaña del navegador -->
+  
+  <!-- Enlace que vincula tu hoja de estilos externa (styles.css) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Lienzo transparente donde el script dibuja los papelitos de confeti -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- CONTENEDOR DE ELEMENTOS DECORATIVOS EN EL FONDO -->
+  <div class="galeria-fondo">
+    <!-- Globos flotando al fondo (detrás del título y la carta) -->
+    <img src="Globos.png" alt="Globos Fondo" class="img-elemento globos-detras">
+
+    <!-- Damita más grande que el pastel y la carta (a un costado del pastel) -->
+    <img src="pastel.png" alt="pastel" class="img-elemento pastel-grande">
+
+    <!-- Pastel grande ubicado a un lado de la carta -->
+    <img src="damita.png" alt="damita" class="img-elemento damita-espera">
+
+    <!-- Gatitos con mayor tamaño y animaciones personalizadas -->
+    <img src="Michiflor.png" alt="Gatito con Flor" class="img-elemento gatito-festejo">
+    <img src="michifeliz.png" alt="Gatito Saludando" class="img-elemento gatito-saludo">
+    <img src="Michiabrazo.png" alt="Gatito Festejando" class="img-elemento gatito-flor">
+
+    <!-- Ramos de globos agrupados en la esquina inferior izquierda -->
+    <img src="Globos.png" alt="Globos Esquina Izquierda 1" class="img-elemento globos-esquina-izq">
+    <img src="Globos.png" alt="Globos Esquina Izquierda 2" class="img-elemento globos-esquina-izq-2">
+
+    <!-- Ramos de globos agrupados en la esquina inferior derecha -->
+    <img src="Globos.png" alt="Globos Esquina Derecha 1" class="img-elemento globos-esquina-der">
+    <img src="Globos.png" alt="Globos Esquina Derecha 2" class="img-elemento globos-esquina-der-2">
+  </div>
+
+  <!-- Contenedor bloque central que agrupa y centra todo el contenido en pantalla -->
+  <div class="contenedor">
+    
+    <!-- Encabezado principal que muestra el título neón arriba del sobre -->
+    <h1 class="titulo-neon">¡Feliz Cumpleaños!</h1>
+
+    <!-- Envoltura principal del sobre (controla el ancho/alto total del diseño) -->
+    <div class="envoltura-sobre">
+      
+      <!-- Contenedor interno que resguarda la carta blanca -->
+      <div class="sobre">
+        
+        <!-- Hoja o tarjeta de papel blanca que se desliza hacia arriba -->
+        <div class="carta">
+          
+          <!-- Bloque de contenido editable que alberga el texto del mensaje -->
+          <div class="contenido">
+            
+            <h2>Querida Ali,</h2> <!-- Encabezado principal de saludo -->
+            
+            <!-- Mensaje de felicitación personalizado -->
+            <p>
+              Hoy en este tu dia especial, espero que pases buenos momentos en compañia de tus seres queridos, espero que te aloques como lo haces todos los años con tus amigas.
+              Disfruta tu dia de principio a fin, te deseo un dia lleno de bendiciones.
+            </p>
+
+            <!-- Firma y despedida -->
+            <p class="firma">Con mucho cariño,<br><strong>Tu Cortesito!!🫶🏾</strong></p>
+
+            <!-- IMAGEN AL PIE DE LA CARTA (Alineada a la esquina inferior derecha) -->
+            <div class="contenedor-pie-carta">
+              <img src="Gatitonegro.png" alt="Gatito negro al pie" class="imagen-pie-carta">
+            </div>
+            
+          </div> <!-- Cierre de .contenido -->
+        </div> <!-- Cierre de .carta -->
+      </div> <!-- Cierre de .sobre -->
+
+      <!-- Emoji o sello de corazón interactivo en el centro del sobre -->
+      <div class="corazon">❤️</div>
+
+      <!-- Solapa superior triangulado (Actúa como la tapa que se abre hacia arriba) -->
+      <div class="solapa-superior"></div>
+      
+      <!-- Solapa triangulada del lado derecho del sobre -->
+      <div class="solapa-derecha"></div>
+      
+      <!-- Solapa triangulada del lado izquierdo del sobre -->
+      <div class="solapa-izquierda"></div>
+      
+    </div> <!-- Cierre de .envoltura-sobre -->
+
+    <!-- Texto de orientación visual ubicado debajo del sobre -->
+    <p class="instruccion">Toca el sobre o el corazón para abrir tu tarjeta ✨</p>
+    
+  </div> <!-- Cierre de .contenedor -->
+
+  <!-- Elemento de audio invisible para reproducir la canción de fondo cuando abren el sobre -->
+  <audio id="musica" src="happy birthday lofi version [ayGzVtcAK9Q].mp3" preload="auto"></audio>
+
+  <!-- Enlace que carga y ejecuta el archivo de lógica JavaScript al final del documento -->
+  <script src="script.js"></script>
+</body>
+</html>

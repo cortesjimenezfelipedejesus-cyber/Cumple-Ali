@@ -1,0 +1,468 @@
+/* =========================================================
+   1. REGISTRO DE TIPOGRAFÍA PERSONALIZADA (DAFONT)
+   ========================================================= */
+@font-face {
+  /* Nombre clave que le asignamos a la fuente para usarla en el CSS */
+  font-family: 'MiFuente'; 
+
+  /* Ruta del archivo de fuente y especificación del formato OpenType (.otf) */
+  src: url('PerfectGirl-Script.otf') format('opentype'); 
+
+  /* Define el grosor base de la fuente declarada */
+  font-weight: normal; 
+
+  /* Define el estilo base (sin inclinación forzada) */
+  font-style: normal;  
+}
+
+/* =========================================================
+   2. REGLAS BASE Y CONFIGURACIÓN DE PANTALLA (RESET)
+   ========================================================= */
+* {
+  margin: 0;            /* Elimina los márgenes por defecto del navegador */
+  padding: 0;           /* Elimina los rellenos internos por defecto del navegador */
+  box-sizing: border-box; /* Garantiza que los bordes y rellenos no aumenten el tamaño final de los elementos */
+}
+
+body {
+  /* Tipografía por defecto para textos sencillos del sistema */
+  font-family: 'Segoe UI', sans-serif; 
+
+  /* Fondo de pantalla con degradado circular */
+  background: radial-gradient(circle at center, #ffffff 0%, #fce4ec 60%, #f8bbd0 100%);
+
+  /* Fuerza al cuerpo de la página a medir mínimo el 100% de la altura de la pantalla visible */
+  min-height: 100vh; 
+
+  /* Activa el modelo Flexbox para centrar todo el contenido */
+  display: flex; 
+
+  /* Centra el contenido horizontalmente en la pantalla */
+  justify-content: center; 
+
+  /* Centra el contenido verticalmente en la pantalla */
+  align-items: center; 
+
+  /* Oculta las barras de desplazamiento */
+  overflow: hidden; 
+
+  /* Establece la posición relativa como contexto para elementos hijos */
+  position: relative;
+}
+
+/* =========================================================
+   3. ANIMACIÓN DE CONFETI EN PANTALLA COMPLETA
+   ========================================================= */
+#confettiCanvas {
+  position: fixed;      /* Mantiene el lienzo fijo cubriendo toda la ventana */
+  top: 0;               /* Pegado al borde superior */
+  left: 0;              /* Pegado al borde izquierdo */
+  width: 100%;          /* Ocupa el 100% del ancho de la pantalla */
+  height: 100%;         /* Ocupa el 100% del alto de la pantalla */
+  pointer-events: none; /* Permite clics a través del canvas */
+  z-index: 10;           /* Capa de profundidad intermedia */
+}
+
+.contenedor {
+  text-align: center;   /* Centra los textos contenidos dentro */
+  display: flex;        /* Activa Flexbox para los elementos hijos */
+  flex-direction: column; /* Alinea los elementos en columna */
+  align-items: center;  /* Centra los elementos horizontalmente */
+  z-index: 20;          /* Capa por encima del confeti */
+}
+
+/* =========================================================
+   4. TÍTULO CON EFECTO NEÓN ("¡Feliz Cumpleaños!")
+   ========================================================= */
+.titulo-neon {
+  font-family: 'MiFuente', cursive; /* Aplica la fuente descargada de DaFont */
+  font-size: 3.2rem; 
+  color: #8b1685; ; /* Color crema suave */
+
+  /* SOMBRAS MULTICAPA: Crean el resplandor neón rosado */
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px  #dc3db9,
+    0 0 20px #ff4081,
+    0 0 30px #e91e63;
+
+  margin-bottom: 25px; /* Espacio de separación entre el título y el sobre */
+}
+
+/* =========================================================
+   5. ESTRUCTURA DEL SOBRE ROSA
+   ========================================================= */
+.envoltura-sobre {
+  position: relative;   
+  width: 340px; 
+  height: 220px; 
+  background-color: #f06292; 
+  border-radius: 0 0 10px 10px; 
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18); 
+  cursor: pointer;      
+}
+
+/* --- SOLAPA SUPERIOR (TAPA DEL SOBRE) --- */
+.solapa-superior {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 170px solid transparent;
+  border-right: 170px solid transparent;
+  border-top: 120px solid #d81b60; 
+  transform-origin: top; 
+  transition: transform 0.5s ease 0.1s, z-index 0.2s; 
+  z-index: 4; 
+}
+
+/* --- SOLAPA IZQUIERDA --- */
+.solapa-izquierda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 170px solid #ec407a;
+  border-top: 110px solid transparent;
+  border-bottom: 110px solid #ec407a;
+  border-radius: 0 0 0 10px; 
+  z-index: 3; 
+}
+
+/* --- SOLAPA DERECHA --- */
+.solapa-derecha {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-right: 170px solid #e91e63;
+  border-top: 110px solid transparent;
+  border-bottom: 110px solid #e91e63;
+  border-radius: 0 0 10px 0; 
+  z-index: 3; 
+}
+
+/* --- SELLO Y CORAZÓN CENTRAL --- */
+.corazon {
+  position: absolute;
+  top: 50%;             
+  left: 50%;            
+  transform: translate(-50%, -50%); 
+  font-size: 2.2rem;    
+  z-index: 5;           
+  transition: transform 0.3s ease; 
+}
+
+.envoltura-sobre:hover .corazon {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.sobre {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   6. CARTA BLANCA INTERNA (GUARDADA ADENTRO)
+   ========================================================= */
+.carta {
+  position: absolute;
+  bottom: 0;            
+  left: 15px;           
+  width: 310px; 
+  height: 190px; 
+  background: #ffffff;  
+  border-radius: 12px;  
+  padding: 22px 25px;   
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15); 
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), height 0.6s ease, width 0.6s ease, left 0.6s ease, box-shadow 0.6s ease;
+  z-index: 2;           
+  
+  /* Permite scroll suave si el contenido sobrepasa la carta */
+  overflow-y: auto;     
+  overflow-x: hidden;   
+}
+
+/* Scrollbar personalizada en rosa */
+.carta::-webkit-scrollbar {
+  width: 6px;
+}
+.carta::-webkit-scrollbar-thumb {
+  background: #f48fb1;
+  border-radius: 10px;
+}
+.carta::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================================================
+   7. TEXTO INTERNO DE LA CARTA Y ESTILOS DE PIE
+   ========================================================= */
+.contenido h2 {
+  font-family: 'MiFuente', cursive; 
+  font-size: 2.6rem;                
+  color: #8b1685;                   
+  margin-bottom: 12px;              
+
+  /* EFECTO NEÓN ROSADO */
+  text-shadow: 
+    0 0 4px #ffffff,
+    0 0 8px #dc3db9,
+    0 0 15px #ff4081,
+    0 0 25px #8d1274;
+}
+
+.contenido p {
+  font-family: 'MiFuente', cursive; 
+  font-size: 1.8rem; 
+  color: #111111;       
+  line-height: 1.45; 
+}
+
+.firma {
+  margin-top: 15px;      
+  text-align: right;     
+  font-size: 1.6rem;    
+}
+
+/* --- IMAGEN UBICADA EN LA ESQUINA INFERIOR DERECHA DEL PIE DE CARTA --- */
+.contenedor-pie-carta {
+  text-align: right;     /* Alinea la imagen totalmente a la derecha */
+  margin-top: 10px; 
+}
+
+.imagen-pie-carta {
+  width: 105px;          /* Ligeramente más grande */
+  height: auto;
+  display: inline-block;
+}
+
+/* =========================================================
+   8. ELEMENTOS DECORATIVOS DEL FONDO Y SUS ANIMACIONES
+   ========================================================= */
+.galeria-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* No intervienen con los clics */
+  z-index: 15;
+}
+
+.img-elemento {
+  position: absolute;
+  height: auto;
+}
+
+/* --- A. GLOBOS ATRÁS DE LA CARTA (MÁS GRANDES) --- */
+.globos-detras {
+  width: 320px; /* Aumentado a 320px */
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12; /* Queda detrás de la carta abierta */
+  animation: flotarSuave 4s ease-in-out infinite alternate;
+}
+
+/* --- B. PASTEL GRANDE (AL LADO IZQUIERDO DE LA CARTA) --- */
+.pastel-grande {
+  width: 340px;
+  bottom: 22%;
+  right: calc(50% + 90px);   /* Borde derecho del pastel queda DEBAJO de la carta */
+  left: auto;
+  z-index: 25;
+  animation: latidoPastel 3s ease-in-out infinite alternate;
+}
+
+/* --- C. DAMITA EN ESPERA (MÁS GRANDE QUE EL PASTEL Y LA CARTA) --- */
+.damita-espera {
+  height: min(62vh, 430px);
+  width: auto;
+  bottom: 28%;
+  left: calc(50% + 100px);    /* A la derecha de la carta */
+  right: auto;
+  z-index: 26;
+  animation: esperaAnsiosa 2.5s ease-in-out infinite alternate;
+}
+
+/* --- D. GATITOS MÁS GRANDES --- */
+.gatito-festejo {
+  width: 240px;
+  top: 5%;
+  left: 2%;
+  animation: saltitoFestejo 1.2s ease-in-out infinite alternate;
+}
+
+.gatito-saludo {
+  width: 240px;
+  top: 5%;
+  right: 2%;
+  animation: balanceoSaludo 2s ease-in-out infinite alternate;
+}
+
+.gatito-flor {
+  width: 230px;
+  bottom: 2%;
+  left: calc(50% + 200px);
+  right: auto;
+  animation: respirarSuave 3s ease-in-out infinite alternate;
+}
+
+/* --- E. RAMOS DE GLOBOS EN ESQUINAS INFERIORES --- */
+.globos-esquina-izq {
+  width: 340px;
+  bottom: -20px;
+  left: -30px;
+  animation: flotarGlobo 3.5s ease-in-out infinite alternate;
+}
+
+.globos-esquina-izq-2 {
+  width: 300px;
+  bottom: 60px;
+  left: 80px;
+  opacity: 0.9;
+  animation: flotarGlobo 4s ease-in-out infinite alternate 0.3s;
+}
+
+.globos-esquina-der {
+  width: 340px;
+  bottom: -20px;
+  right: -30px;
+  animation: flotarGlobo 4s ease-in-out infinite alternate 0.5s;
+  scale: -1 1;   /* voltea el ramo en horizontal */
+}
+
+.globos-esquina-der-2 {
+  width: 300px;
+  bottom: 60px;
+  right: 80px;
+  opacity: 0.9;
+  animation: flotarGlobo 3.7s ease-in-out infinite alternate 0.8s;
+   scale: -1 1;
+}
+
+/* =========================================================
+   9. DEFINICIÓN DE KEYFRAMES PARA ANIMACIONES EN MOVIMIENTO
+   ========================================================= */
+
+/* Movimiento de elevación para globos */
+@keyframes flotarGlobo {
+  0% { transform: translateY(0px) rotate(-2deg); }
+  100% { transform: translateY(-18px) rotate(3deg); }
+}
+
+@keyframes flotarSuave {
+  0% { transform: translateX(-50%) translateY(0px); }
+  100% { transform: translateX(-50%) translateY(-15px); }
+}
+
+/* Animación de espera para la damita */
+@keyframes esperaAnsiosa {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.02) translateY(-4px); }
+  100% { transform: scale(0.99) translateY(2px); }
+}
+
+/* Saltitos para el gatito festejando */
+@keyframes saltitoFestejo {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-12px) scale(1.05); }
+}
+
+/* Balanceo lateral para el gatito saludando */
+@keyframes balanceoSaludo {
+  0% { transform: rotate(-6deg); }
+  100% { transform: rotate(6deg); }
+}
+
+/* Respiración/latido suave */
+@keyframes respirarSuave {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+@keyframes latidoPastel {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
+}
+
+/* =========================================================
+   10. ANIMACIÓN AL HACER CLIC (ESTADO ABIERTO EXPANDIDO)
+   ========================================================= */
+.envoltura-sobre.abierto .solapa-superior {
+  transform: rotateX(180deg); 
+  z-index: 1;                 
+}
+
+.envoltura-sobre.abierto .carta {
+  --alto-carta: min(480px, 78vh);   /* Alto de la carta abierta (se adapta a la pantalla) */
+  width: 440px;                      /* Carta más ancha para que el texto quepa mejor */
+  left: -50px;                       /* Centra la carta más ancha sobre el sobre (340px) */
+  height: var(--alto-carta);
+  /* Sube/baja la carta para que su centro coincida con el centro de la pantalla */
+  transform: translateY(calc(var(--alto-carta) / 2 - 130px));
+  z-index: 100;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.instruccion {
+  font-family: 'Segoe UI', sans-serif; 
+  margin-top: 25px;      
+  font-size: 0.9rem;     
+  color: #777;           
+}
+
+/* Pantallas medianas/pequeñas: reduce adornos para que no tapen la carta */
+@media (max-width: 1100px) {
+  .pastel-grande { width: 220px; right: calc(50% + 160px); }
+  .damita-espera { height: 300px; left: calc(50% + 200px); }
+  .gatito-festejo, .gatito-saludo { width: 150px; }
+  .gatito-flor { width: 150px; }
+  .globos-esquina-izq, .globos-esquina-der { width: 220px; }
+  .globos-esquina-izq-2, .globos-esquina-der-2 { width: 190px; }
+}
+/* =========================================================
+   ANIMACIONES DEL SOBRE
+   ========================================================= */
+
+/* Sobre flotando suavemente */
+.envoltura-sobre {
+  animation: tocarPuerta 2.5s ease-in-out infinite;
+}
+
+@keyframes tocarPuerta {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  66%  { transform: rotate(-3deg); }
+  72%  { transform: rotate(3deg); }
+  78%  { transform: rotate(-3deg); }
+  84%  { transform: rotate(2deg); }
+}
+
+@keyframes flotarSobre {
+  0%   { transform: translateY(0) rotate(-1deg); }
+  100% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Corazón latiendo */
+.corazon {
+  animation: latirCorazon 1.2s ease-in-out infinite;
+}
+
+@keyframes latirCorazon {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%      { transform: translate(-50%, -50%) scale(1.25); }
+}
+
+/* Cuando el sobre está abierto, deja de flotar y el corazón deja de latir */
+.envoltura-sobre.abierto {
+  animation: none;
+}
+
+.envoltura-sobre.abierto .corazon {
+  animation: none;
+}
